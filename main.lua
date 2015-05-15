@@ -1,6 +1,7 @@
 -- load namespace
 local socket = require("socket")
-local lpeg = require('lpeg')
+local HTTP = require("HTTP")
+
 -- create a TCP socket and bind it to the local host, at any port
 local server = assert(socket.bind("*", 0))
 -- find out which port the OS chose for us
@@ -15,12 +16,18 @@ while 1 do
   -- make sure we don't block waiting for this client's line
   client:settimeout(10)
   -- receive the line
+  
   local line, err = client:receive()
   -- if there was no error, send it back to the client
   if not err then 
-    client:send(line .. "\n") 
-    print(line .. "\n")
-  end
+  print(line)
+	  resp = HTTP.newResponse(200)
+	  resp.body = "<html><body><h1>Hello World!</h1></body></html>"
+	  resp:addHeader("Content-Type", "text/html; charset=UTF-8")
+	  resp:addHeader("Connection", "close")
+	  client:send(resp:tostring()) 
+	  client:close()
+  else client:send("\r\n\r\n") client:shutdown() break end
 
   -- done with client, close the object
   client:close()
