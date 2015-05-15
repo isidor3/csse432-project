@@ -1,0 +1,60 @@
+#header > img{
+	max-width: 175pt;
+	margin-top: -40pt;
+}
+#core > div > img{
+	max-width: 150pt;
+	max-height: 150pt;
+}
+.postNumber{
+	float: right;
+}
+.post > img, .post > p{
+	display: inline-block;
+	vertical-align: middle;
+	float: clear;
+}
+#header{
+	text-align: center;
+	margin: 50pt;
+}
+.post{
+	border-width: 2.5pt;
+	border-style: solid;
+	border-color: #BB7A20;
+	border-radius: 10pt;
+	margin: 3.5pt;
+	padding: 10pt;
+}
+body{
+	background-color: #FBEECA;
+	color: #844F11;
+}
+#faux{
+	display: none;
+}
+
+
+form {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+}
+label, input {
+    display: inline-block;
+}
+label {
+    width: 30%;
+    text-align: right;
+}
+label + input {
+    width: 30%;
+    margin: 0 30% 0 4%;
+}
+.button{
+	margin: 10pt;
+	background-color: #FFFFFF;
+	border-radius: 10pt;
+	color: #AD9776;
+}
