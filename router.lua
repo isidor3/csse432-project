@@ -58,6 +58,11 @@ while 1 do
 			resp = newResponse(201)
 			resp.headers["Connection"] = request.headers["Connection"]
 			linda:send("responses", {index, number, resp:tostring()})
+		elseif request.method == "PUT" then
+			body = body..request.body
+			resp = newResponse(202)
+			resp.headers["Connection"] = request.headers["Connection"]
+			linda:send("responses", {index, number, resp:tostring()})
 		else
 			resp = newResponse(405)
 			resp.body = "<html><body><h2>Method not allowed!</h2></body></html>"
@@ -86,7 +91,7 @@ HTTP.codes = {
 	[102] = "Processing",
 	[200] = "OK",
 	[201] = "Created",
-	[202] = "Acceppted",
+	[202] = "Accepted",
 	[203] = "Non-Authorative Information",
 	[204] = "No Content",
 	[205] = "Reset Content",
